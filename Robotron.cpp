@@ -44,10 +44,8 @@ int main()
 	{
 		int rx = rand() % x; // Random X position for robot
 		int ry = rand() % y; // Random Y position for robot
-		if (screen[rx+(ry*x)] == ' ') 
-			screen[rx+(ry*x)] = '#'; // Place robot on the screen
-		
-		else
+		(screen[rx+(ry*x)] == ' ') ?
+			screen[rx+(ry*x)] = '#': // Place robot on the screen
 			i--; // If position is occupied, retry placing the robot
 		
 	}
@@ -57,9 +55,8 @@ int main()
 	{
 		int jx = rand() % x; // Random X position for junk
 		int jy = rand() % y; // Random Y position for junk
-		if (screen[jx+(jy*x)] == ' ')
-			screen[jx+(jy*x)] = '^'; // Place Junk on the screen
-		else
+		(screen[jx+(jy*x)] == ' ') ?
+			screen[jx+(jy*x)] = '^': // Place Junk on the screen
 			i--; // If position is occupied, retry placing the junk
 	}
 	// Game loop
@@ -103,15 +100,15 @@ int main()
 
 		screen[px+(py*x)] = ' '; // Clear old player position
 
-		if (screen[new_px+(new_py*x)] == '#') // If robot is encountered
+		(screen[new_px+(new_py*x)] == '#') ?// If robot is encountered
 		
 			l--, // Lose a life
 			screen[new_px+(new_py*x)] = '@', // Clear robot
 			screen2[new_px+(new_py*x)] = '@', // Update player position
 			px = new_px,
-			py = new_py;
+			py = new_py:
 		
-		else // If junk or space is encountered
+		 // If junk or space is encountered
 		
 			screen[new_px+(new_py*x)] = '@', // Clear junk pile
 			screen2[new_px+(new_py*x)] = '@', // Update player position
@@ -157,7 +154,7 @@ int main()
 		r = 0; // Reset robot count
 		for (int i = 0; i < x * y; i++)
 		{
-			if (screen2[i] == '#') // Count remaining robots
+			if(screen2[i] == '#') // Count remaining robots
 				r++;
 			
 		}
